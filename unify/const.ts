@@ -11,7 +11,7 @@ export interface Obj {
   "CreatedAt": string,
   "UpdatedAt": string,
   "DeletedAt": string,
-  "name": string,
-  "artist": string,
-  "reason": string
+  "Name": string,
+  "Artist": string,
+  "Reason": string
 }
