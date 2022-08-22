@@ -7,6 +7,9 @@ import axios from 'axios'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { apiURL, Obj } from '../unify/const'
+const axiosBase = axios.create({
+  baseURL: 'http://localhost:8080',
+});
 
 const Home: NextPage = ()=> {
   const fetcher = async (address: string) => {
@@ -23,19 +26,22 @@ const Home: NextPage = ()=> {
   const { mutate } = useSWRConfig();
   const { data, error } = useSWR(apiURL, fetcher)
   const [ name, setName ] = useState('');
+  const [ artist, setArtist ] = useState('');
   const [ reason, setReason ] = useState('');
 
   // 登録機能
-  const sendRegister = async ()=> {
-    axios.post(`${apiURL}/register?title=${name}&content=${reason}`)
-    .then(()=> {
+  const sendRegister = ()=> {
+    axiosBase.post(`/register?name=${name}&artist=${artist}&reason=${reason}`)
+    .then((ret)=> {
       setName("");
       setReason("");
+      setArtist("");
       // SWRがrefetchを行う
       mutate(apiURL);
     })
     // Go側でエラーがあった場合
     .catch(()=> {
+      console.log("err")
       router.push("/_error");
     });
   };
@@ -49,7 +55,8 @@ const Home: NextPage = ()=> {
         <h1>{value.ID}番</h1>
         <p>曲名</p>
         <li>{value.name}</li>
-        <p>内容</p>
+        <p>歌手名</p>
+        <p>おすすめポイント</p>
         <li>{value.reason}</li>
         <Link href={detal_address}>
           <a>詳細</a>
@@ -66,10 +73,12 @@ const Home: NextPage = ()=> {
       </Head>
       <main className={styles.main}>
       <h1>投稿フォーム</h1>
-        <label>タイトル:</label><br></br>
-        <input type="text" name="name" value={name} onChange={(e) => setTitle(e.target.value)}/><br></br>
-        <label>内容</label><br></br>
-        <input type="text" name="content" value={reason} onChange={(e) => setContent(e.target.value)}/><br></br>
+        <label>曲名</label><br></br>
+        <input type="text" name="name" value={name} onChange={(e) => setName(e.target.value)}/><br></br>
+        <label>歌手名</label><br></br>
+        <input type="text" name="content" value={artist} onChange={(e) => setArtist(e.target.value)}/><br></br>
+        <label>おすすめポイント</label><br></br>
+        <input type="text" name="content" value={reason} onChange={(e) => setReason(e.target.value)}/><br></br>
         <button type="submit" onClick={sendRegister}>送信</button><br></br>
         {data ? 
           <div>
