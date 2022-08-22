@@ -1,4 +1,10 @@
+import axios from 'axios'
+
 export const apiURL: string = 'http://localhost:8080';
+
+export const axiosBase = axios.create({
+  baseURL: 'http://localhost:8080',
+});
 
 export interface Obj {
   "ID": number,
@@ -6,6 +12,6 @@ export interface Obj {
   "UpdatedAt": string,
   "DeletedAt": string,
   "name": string,
-  "reason": string,
   "artist": string,
+  "reason": string
 }

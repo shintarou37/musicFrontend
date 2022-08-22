@@ -3,13 +3,9 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import useSWR, { useSWRConfig } from 'swr'
 import { useState } from 'react'
-import axios from 'axios'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { apiURL, Obj } from '../unify/const'
-const axiosBase = axios.create({
-  baseURL: 'http://localhost:8080',
-});
+import { apiURL, Obj, axiosBase } from '../unify/const'
 
 const Home: NextPage = ()=> {
   const fetcher = async (address: string) => {
@@ -56,6 +52,7 @@ const Home: NextPage = ()=> {
         <p>曲名</p>
         <li>{value.name}</li>
         <p>歌手名</p>
+        <li>{value.artist}</li>
         <p>おすすめポイント</p>
         <li>{value.reason}</li>
         <Link href={detal_address}>
@@ -64,7 +61,6 @@ const Home: NextPage = ()=> {
       </ul>
     })
   }
-
   return (
     <div className={styles.container}>
       <Head>
@@ -73,6 +69,11 @@ const Home: NextPage = ()=> {
       </Head>
       <main className={styles.main}>
       <h1>投稿フォーム</h1>
+        <label>シチュエーション</label><br></br>
+        <select>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select>
         <label>曲名</label><br></br>
         <input type="text" name="name" value={name} onChange={(e) => setName(e.target.value)}/><br></br>
         <label>歌手名</label><br></br>
