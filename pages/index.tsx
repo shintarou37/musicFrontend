@@ -29,6 +29,7 @@ const Home: NextPage = ()=> {
   const sendRegister = ()=> {
     axiosBase.post(`/register?name=${name}&artist=${artist}&reason=${reason}`)
     .then((ret)=> {
+      console.log("----------------------" + JSON.stringify(ret))
       setName("");
       setReason("");
       setArtist("");
@@ -42,25 +43,33 @@ const Home: NextPage = ()=> {
     });
   };
 
-  let datas;
+  let musics;
+  console.log("----------------------" + data)
   if(data){
-    datas = data.map((value: Obj, key: number)=> {
-      let detal_address = `/detal/?id=${value.ID}`;
-      // keyはユニークIDとして付与している
-      return <ul key={key}>
-        <h1>{value.ID}番</h1>
-        <p>曲名</p>
-        <li>{value.name}</li>
-        <p>歌手名</p>
-        <li>{value.artist}</li>
-        <p>おすすめポイント</p>
-        <li>{value.reason}</li>
-        <Link href={detal_address}>
-          <a>詳細</a>
-        </Link>
-      </ul>
-    })
+  console.log("typeof----------------------" +typeof data)
+  console.log("Mst_situation length----------------------" + data.Mst_situation.length)
+    console.log("----------------------" + JSON.stringify(data))
+    if(JSON.parse(data.Music).length){
+      const music = JSON.parse(data.Music);
+      musics = music.map((value: Obj, key: number)=> {
+        let detalPath = `/detal/?id=${value.ID}`;
+        // keyはユニークIDとして付与している
+        return <ul key={key}>
+          <h1>{value.ID}番</h1>
+          <p>曲名</p>
+          <li>{value.Name}</li>
+          <p>歌手名</p>
+          <li>{value.Artist}</li>
+          <p>おすすめポイント</p>
+          <li>{value.Reason}</li>
+          <Link href={detalPath}>
+            <a>詳細</a>
+          </Link>
+        </ul>
+      })
+    }
   }
+  
   return (
     <div className={styles.container}>
       <Head>
@@ -83,7 +92,7 @@ const Home: NextPage = ()=> {
         <button type="submit" onClick={sendRegister}>送信</button><br></br>
         {data ? 
           <div>
-            {datas}
+            {musics}
           </div>
         :
           <p></p>
