@@ -13,13 +13,14 @@ export default function Detail() {
   // クエリパラメーターを取得する
   let { id } = router.query;
   // クエリパラメーターを取得できなかった場合は"false"という文字列を格納する
-  if(!id){
-    id = "false";
-  }
-  console.log("id---------------------------------------  " + id)
+  // if(!id){
+  //   id = "false";
+  // }
+  // console.log("id---------------------------------------  " + id)
   // fetcher関数の第一引数にはuseSWRの第一引数が入る
   const fetcher = async (address: string) => {
     const res = await fetch(address);
+    console.log("---------------------------------------  " + res.status)
     // もしステータスコードが 200-299 の範囲内では無い場合はエラーページに遷移する
     if (!res.ok) {
       router.push("/_error");
