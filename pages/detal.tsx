@@ -5,6 +5,7 @@ import { useState } from 'react'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import { apiURL } from '../unify/const'
+import moment from 'moment';
 
 export default function Detail() {
   const router = useRouter();
@@ -32,6 +33,7 @@ export default function Detail() {
   // console.log("--------------------------" + JSON.stringify(data))
   // dataがない場合に戻り値を渡すと一瞬レイアウトが崩れる
   if(data){
+    const createdAt = moment(data.CreatedAt)
     return (
       <div className={styles.container}>
         <Head>
@@ -52,7 +54,7 @@ export default function Detail() {
           <p>おすすめポイント</p>
           <li>{data.Reason}</li>
           <p>投稿日</p>
-          <li>{data.CreatedAt}</li>
+          <li>{createdAt.format('YYYY/MM/DD HH:mm')}</li>
               </ul>
             </div>
           :
