@@ -127,3 +127,20 @@
     filter: invert(1);
   }
 }
+
+.header{
+  height: 10vh;
+  background-color: #66CCFF;
+  display: flex;
+  align-items: center;
+  justify-content:space-between
+}
+
+.logo{
+  color: white;
+  text-decoration: none;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  padding-left: 20px;
+  font-size: 23px;
+  margin-bottom: 10px;
+}
