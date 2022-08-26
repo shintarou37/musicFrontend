@@ -22,13 +22,14 @@ const Home: NextPage = ()=> {
 
   const router = useRouter();
   const { mutate } = useSWRConfig();
-  const { data, error } = useSWR(apiURL, fetcher)
   const [ name, setName ] = useState('');
   const [ artist, setArtist ] = useState('');
   const [ reason, setReason ] = useState('');
   const [ situation, setSituation ] = useState('1');
+  const [ search, setSearch ] = useState('');
   const [ errMessage, setErrMessage ] = useState('');
   const [ isNew, setIsNew ] = useState(false);
+  const { data, error } = useSWR(`${apiURL}?&search=${search}`, fetcher)
 
   // 登録機能
   const sendRegister = ()=> {
@@ -114,7 +115,7 @@ const Home: NextPage = ()=> {
       </Head>
       <Header isNew={isNew} setIsNew={setIsNew}/>
       {Mst_situation ?
-        <Search Mst_situation={Mst_situation}/>
+        <Search Mst_situation={Mst_situation} setSearch={setSearch}/>
         :
           <p></p>
         }
