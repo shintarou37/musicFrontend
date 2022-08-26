@@ -22,3 +22,8 @@ export interface SituationObj {
   "Name": string,
   "Musics": null
 }
+
+export interface IsNew {
+  "isNew": boolean,
+  "setIsNew": Function,
+}
