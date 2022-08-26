@@ -149,3 +149,16 @@
   padding-right: 20px;
   font-size: 20px;
 }
+
+.contents {
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 20px;
+}
+.item {
+  padding: 10px 10px;
+  border: solid black thin;
+  display:inline-block;
+  width: 10%;
+  background-color: white;
+}
