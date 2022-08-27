@@ -1,19 +1,15 @@
 import styles from '../../styles/Home.module.css'
-import { SituationObj, searchArg } from '../../unify/const'
+import { registerArg } from '../../unify/const'
 
-export default function Register(props: any) {
+export default function Register(props: registerArg) {
 
   return (
     <div>
     <h1>投稿フォーム</h1>
     <label>シチュエーション</label>
-    {props.situations ?
     <select onChange={(e) => props.setSituation(e.target.value)}>
       {props.situations}
     </select>
-    :
-      <p></p>
-    }
     <br></br>
     <label>曲名（1 ~ 100文字）</label>
     <input type="text" name="name" value={props.name} onChange={(e) => props.setName(e.target.value)}/><br></br>

@@ -24,12 +24,24 @@ export interface SituationObj {
 }
 
 export interface IsNew {
-  "isNew": boolean,
-  "setIsNew": Function,
+  "isNew": boolean
+  "setIsNew": Function
 }
 
 export interface searchArg{
-  Mst_situation: [SituationObj],
-  search: string,
+  Mst_situation: [SituationObj]
+  search: string
   setSearch: Function
+}
+
+export interface registerArg{
+  situations: React.ReactNode
+  name: string
+  artist: string
+  reason: string
+  setSituation: Function
+  setName: Function
+  setArtist: Function
+  setReason: Function
+  sendRegister: any
 }
