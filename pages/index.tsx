@@ -57,7 +57,7 @@ const Home: NextPage = ()=> {
       setArtist("");
       setErrMessage("")
       // SWRがrefetchを行う
-      mutate(apiURL);
+      mutate(`${apiURL}?&search=${search}`);
     })
     // Go側でエラーがあった場合
     .catch((err)=> {
