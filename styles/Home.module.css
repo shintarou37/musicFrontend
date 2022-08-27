@@ -165,3 +165,24 @@
 .select{
   background-color: #0070f3;
 }
+/* Register */
+.situation{
+  width: 200px;
+  height: 22px;
+}
+.postInput{
+  width: 200px;
+}
+
+.postBtm{
+  margin: 5px;
+  border: none; 
+  background-color: #00CCFF;
+  color: white;
+  width: 120px;
+  font-size: 16pt;
+  border-radius: 5px;
+}
+.postClose{
+  margin-left: 40px;
+}

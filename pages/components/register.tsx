@@ -5,19 +5,19 @@ export default function Register(props: registerArg) {
 
   return (
     <div>
-    <h1>投稿フォーム</h1>
-    <label>シチュエーション</label>
-    <select onChange={(e) => props.setSituation(e.target.value)}>
-      {props.situations}
-    </select>
-    <br></br>
-    <label>曲名（1 ~ 100文字）</label>
-    <input type="text" name="name" value={props.name} onChange={(e) => props.setName(e.target.value)}/><br></br>
-    <label>歌手名（1 ~ 100文字）</label>
-    <input type="text" name="content" value={props.artist} onChange={(e) => props.setArtist(e.target.value)}/><br></br>
-    <label>おすすめポイント（1 ~ 1000文字）</label>
-    <input type="text" name="content" value={props.reason} onChange={(e) => props.setReason(e.target.value)}/><br></br>
-    <button type="submit" onClick={props.sendRegister}>送信</button><br></br>
-  </div>
+      <label>シチュエーション</label><br></br>
+      <select className={styles.situation} onChange={(e) => props.setSituation(e.target.value)}>
+        {props.situations}
+      </select>
+      <br></br>
+      <label>曲名（1 ~ 100文字）</label><br></br>
+      <input className={styles.postInput} type="text" value={props.name} onChange={(e) => props.setName(e.target.value)} /><br></br>
+      <label>歌手名（1 ~ 100文字）</label><br></br>
+      <input className={styles.postInput} type="text" value={props.artist} onChange={(e) => props.setArtist(e.target.value)} /><br></br>
+      <label>おすすめポイント（1 ~ 1000文字）</label><br></br>
+      <textarea className={styles.postInput} value={props.reason} onChange={(e) => props.setReason(e.target.value)}></textarea><br></br>
+      <button className={styles.postBtm} type="submit" onClick={props.sendRegister}>投稿する</button>
+      <span className={styles.postClose} onClick={() => { props.setIsNew(false)}}>✖️</span>
+    </div>
   )
 }

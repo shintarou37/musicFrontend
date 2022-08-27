@@ -119,7 +119,7 @@ const Home: NextPage = ()=> {
         <p>{errMessage}</p>
         {/* 投稿フォーム */}
         {isNew ?
-        <Register situations={situations} setSituation={setSituation} name={name} setName={setName} artist={artist} setArtist={setArtist} reason={reason} setReason ={setReason} sendRegister={sendRegister} /> : 
+        <Register situations={situations} setSituation={setSituation} name={name} setName={setName} artist={artist} setArtist={setArtist} reason={reason} setReason ={setReason} sendRegister={sendRegister} setIsNew={setIsNew}/> : 
         <p></p>}
         {/* 一覧 */}
         {data ? <div>{musics}</div>:<p></p>}

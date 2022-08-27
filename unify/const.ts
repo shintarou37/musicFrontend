@@ -44,4 +44,5 @@ export interface registerArg{
   setArtist: Function
   setReason: Function
   sendRegister: any
+  setIsNew: Function
 }
