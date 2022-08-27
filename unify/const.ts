@@ -27,3 +27,9 @@ export interface IsNew {
   "isNew": boolean,
   "setIsNew": Function,
 }
+
+export interface searchArg{
+  Mst_situation: [SituationObj],
+  search: string,
+  setSearch: Function
+}

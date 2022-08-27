@@ -115,7 +115,7 @@ const Home: NextPage = ()=> {
       </Head>
       <Header isNew={isNew} setIsNew={setIsNew}/>
       {Mst_situation ?
-        <Search Mst_situation={Mst_situation} setSearch={setSearch}/>
+        <Search Mst_situation={Mst_situation} search={search} setSearch={setSearch}/>
         :
           <p></p>
         }
@@ -125,7 +125,7 @@ const Home: NextPage = ()=> {
       {isNew ? 
       <div>
         <h1>投稿フォーム</h1>
-        <label className='aa'>シチュエーション</label>
+        <label>シチュエーション</label>
         {situations ?
         <select onChange={(e) => setSituation(e.target.value)}>
           {situations}
