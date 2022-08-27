@@ -202,3 +202,7 @@
   font-weight: bold;
 }
 
+/* detail.tsx */
+.detailContainer{
+  text-align: center;
+}
