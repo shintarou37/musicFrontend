@@ -74,20 +74,19 @@ const Home: NextPage = ()=> {
       musics = music.map((value: MusicObj, key: number)=> {
         let detalPath = `/detal/?id=${value.ID}`;
         // keyはユニークIDとして付与している
-        return <ul key={key}>
-          <h1>{value.ID}番</h1>
+        return <div key={key} className={styles.list}>
           <p>シチュエーション</p>
-          <li>{value.Mst_situationName}</li>
+          <span className={styles.listName}>{value.Mst_situationName}</span>
           <p>曲名</p>
-          <li>{value.Name}</li>
+          <span className={styles.listName}>{value.Name}</span>
           <p>歌手名</p>
-          <li>{value.Artist}</li>
+          <span className={styles.listName}>{value.Artist}</span>
           <p>おすすめポイント</p>
-          <li>{value.Reason}</li>
+          <span className={styles.listName}>{value.Reason}</span><br></br>
           <Link href={detalPath}>
             <a>詳細</a>
           </Link>
-        </ul>
+        </div>
       })
     }
   }
@@ -122,7 +121,7 @@ const Home: NextPage = ()=> {
         <Register situations={situations} setSituation={setSituation} name={name} setName={setName} artist={artist} setArtist={setArtist} reason={reason} setReason ={setReason} sendRegister={sendRegister} setIsNew={setIsNew}/> : 
         <p></p>}
         {/* 一覧 */}
-        {data ? <div>{musics}</div>:<p></p>}
+        {data ? <div className={styles.listContent}>{musics}</div>:<p></p>}
       </main>
       </div>
     </div>

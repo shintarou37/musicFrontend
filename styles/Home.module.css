@@ -186,3 +186,19 @@
 .postClose{
   margin-left: 40px;
 }
+
+/* index.tsx */
+.listContent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.list{
+  width: 350px;
+  background-color: rgba(15, 16, 16, 0.026);
+  margin-top: 10px;
+}
+.listName{
+  font-weight: bold;
+}
+
