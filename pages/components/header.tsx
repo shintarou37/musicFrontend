@@ -1,9 +1,8 @@
 import Head from 'next/head'
 
 import styles from '../../styles/Home.module.css'
-import { IsNew } from '../../unify/obj'
 
-export default function Header(props: IsNew) {
+export default function Header() {
   return (
     <div>
       <Head>
@@ -12,7 +11,6 @@ export default function Header(props: IsNew) {
       </Head>
       <header className={styles.header}>
         <a href="/" className={styles.logo}>オンレコ</a>
-        <a className={`${styles.logo} ${styles.new}`} onClick={() => { props.isNew ? props.setIsNew(false) : props.setIsNew(true); }}>投稿フォーム</a>
       </header>
     </div>
   )

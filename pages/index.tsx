@@ -35,9 +35,6 @@ const Home: NextPage = () => {
   const [isNew, setIsNew] = useState(false);
   const { data, error } = useSWR(`${apiURL}?&search=${search}`, fetcher)
 
-
-
-
   // 投稿ファームのselectタグ生成
   let situations;
   let Mst_situation;
@@ -58,8 +55,8 @@ const Home: NextPage = () => {
         <Search Mst_situation={Mst_situation} search={search} setSearch={setSearch} /> :
         <p></p>
       }
-
       <div className={styles.container}>
+      <p className={`${styles.new}`} onClick={() => { isNew ? setIsNew(false) : setIsNew(true); }}>投稿する</p>
         <main className={styles.main}>
 
           {/* エラーメッセージ */}
