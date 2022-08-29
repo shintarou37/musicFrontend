@@ -4,6 +4,7 @@ import { sendRegister } from '../../unify/func'
 import { useRouter } from 'next/router'
 import { useSWRConfig } from 'swr'
 import { apiURL, axiosBase } from '../../unify/const'
+import { validateRegister } from '../../unify/validate'
 
 export default function Register(props: registerArg) {
   const router = useRouter();
@@ -23,31 +24,23 @@ export default function Register(props: registerArg) {
       <textarea className={styles.postInput} value={props.reason} onChange={(e) => props.setReason(e.target.value)}></textarea><br></br>
       <button className={styles.postBtm} type="submit" onClick={
         async () => {
-          let errMessageTpm = "";
-          if (props.name.length == 0 || props.name.length >= 101) {
-            errMessageTpm += "曲名を0 ~ 100文字で入力してください。"
-          }
-          if (props.artist.length == 0 || props.artist.length >= 101) {
-            errMessageTpm += "歌手名を0 ~ 100文字で入力してください。"
-          }
-          if (props.reason.length >= 1001) {
-            errMessageTpm += "おすすめポイントを1000文字以内で入力してください。"
-          }
-          if (errMessageTpm != "") {
-            props.setErrMessage(errMessageTpm)
+          const retValidate: boolean = validateRegister(props.name, props.artist, props.reason, props.setErrMessage)
+          if(!retValidate){
             return
           }
+
           const ret: boolean = await sendRegister(props.name, props.artist, props.reason, props.situation)
           if (ret == true) {
             props.setName("");
             props.setReason("");
             props.setArtist("");
-            props.setErrMessage("")
+            props.setErrMessage("");
             mutate(`${apiURL}?&search=${props.search}`);
           }
           else {
             router.push("/_error");
           }
+          
         }
       }>投稿する</button>
       <span className={styles.postClose} onClick={() => { props.setIsNew(false) }}>✖️</span>
