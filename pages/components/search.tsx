@@ -1,5 +1,5 @@
 import styles from '../../styles/Home.module.css'
-import { SituationObj, searchArg } from '../../unify/const'
+import { SituationObj, searchArg } from '../../unify/obj'
 
 export default function Search(props: searchArg) {
     const search = props.Mst_situation.map((value: SituationObj, key: number)=> {

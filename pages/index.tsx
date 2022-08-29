@@ -5,7 +5,8 @@ import useSWR, { useSWRConfig } from 'swr'
 import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { apiURL, MusicObj, SituationObj, axiosBase } from '../unify/const'
+import { apiURL, axiosBase } from '../unify/const'
+import { SituationObj } from '../unify/obj'
 import Header from './components/header'
 import Search from './components/search'
 import Register from './components/register'
@@ -68,6 +69,7 @@ const Home: NextPage = () => {
       });
   };
 
+
   // 投稿ファームのselectタグ生成
   let situations;
   let Mst_situation;
@@ -82,19 +84,28 @@ const Home: NextPage = () => {
   return (
     <div >
       <Header isNew={isNew} setIsNew={setIsNew} />
+
       {/* 検索欄 */}
-      {Mst_situation ? <Search Mst_situation={Mst_situation} search={search} setSearch={setSearch} /> : <p></p>}
+      {Mst_situation ?
+        <Search Mst_situation={Mst_situation} search={search} setSearch={setSearch} /> :
+        <p></p>
+      }
+
       <div className={styles.container}>
         <main className={styles.main}>
+
           {/* エラーメッセージ */}
           <p>{errMessage}</p>
+
           {/* 投稿フォーム */}
           {isNew ?
             <Register situations={situations} setSituation={setSituation} name={name} setName={setName} artist={artist} setArtist={setArtist} reason={reason} setReason={setReason} sendRegister={sendRegister} setIsNew={setIsNew} /> :
-            <p></p>}
+            <p></p>
+          }
+
           {/* 一覧 */}
           {data ?
-              <List music={JSON.parse(data.Music)} />
+            <List music={JSON.parse(data.Music)} />
             :
             <p></p>
           }

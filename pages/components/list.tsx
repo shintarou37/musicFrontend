@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 import styles from '../../styles/Home.module.css'
-import { listArg, MusicObj } from '../../unify/const'
+import { listArg, MusicObj } from '../../unify/obj'
 
 export default function List(props: listArg) {
     const musics = props.music.map((value: MusicObj, key: number) => {

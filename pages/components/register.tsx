@@ -1,5 +1,5 @@
 import styles from '../../styles/Home.module.css'
-import { registerArg } from '../../unify/const'
+import { registerArg } from '../../unify/obj'
 
 export default function Register(props: registerArg) {
 

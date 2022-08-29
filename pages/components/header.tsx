@@ -1,7 +1,7 @@
 import Head from 'next/head'
 
 import styles from '../../styles/Home.module.css'
-import { IsNew } from '../../unify/const'
+import { IsNew } from '../../unify/obj'
 
 export default function Header(props: IsNew) {
   return (
