@@ -68,12 +68,6 @@ const Home: NextPage = () => {
       });
   };
 
-  // リスト一覧作成
-  let musics;
-  if (data) {
-    musics = List(JSON.parse(data.Music));
-  }
-  
   // 投稿ファームのselectタグ生成
   let situations;
   let Mst_situation;
@@ -100,9 +94,7 @@ const Home: NextPage = () => {
             <p></p>}
           {/* 一覧 */}
           {data ?
-            <div className={styles.listContent}>
-              {musics}
-            </div>
+              <List music={JSON.parse(data.Music)} />
             :
             <p></p>
           }

@@ -29,7 +29,7 @@ export interface IsNew {
 }
 
 export interface searchArg{
-  Mst_situation: [SituationObj]
+  Mst_situation: SituationObj[]
   search: string
   setSearch: Function
 }
@@ -45,4 +45,8 @@ export interface registerArg{
   setReason: Function
   sendRegister: any
   setIsNew: Function
+}
+
+export interface listArg{
+  music: MusicObj[]
 }

@@ -1,10 +1,10 @@
 import Link from 'next/link'
 
 import styles from '../../styles/Home.module.css'
-import { MusicObj } from '../../unify/const'
+import { listArg, MusicObj } from '../../unify/const'
 
-export default function List(music: MusicObj[]) {
-    const musics = music.map((value: MusicObj, key: number) => {
+export default function List(props: listArg) {
+    const musics = props.music.map((value: MusicObj, key: number) => {
         let detalPath = `/detal/?id=${value.ID}`;
         // keyはユニークIDとして付与している
         return <div key={key} className={styles.list}>
@@ -21,5 +21,8 @@ export default function List(music: MusicObj[]) {
             </Link>
         </div>
     })
-    return musics
+    return <div className={styles.listContent}>
+        {musics}
+    </div>
+
 }
