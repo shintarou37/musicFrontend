@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { apiURL, axiosBase } from '../unify/const'
 import { SituationObj } from '../unify/obj'
+import { sendRegister } from '../unify/func'
 import Header from './components/header'
 import Search from './components/search'
 import Register from './components/register'
@@ -34,40 +35,7 @@ const Home: NextPage = () => {
   const [isNew, setIsNew] = useState(false);
   const { data, error } = useSWR(`${apiURL}?&search=${search}`, fetcher)
 
-  // 登録機能
-  const sendRegister = () => {
 
-    // バリデーション
-    let errMessageTpm = "";
-    if (name.length == 0 || name.length >= 101) {
-      errMessageTpm += "曲名を0 ~ 100文字で入力してください。"
-    }
-    if (artist.length == 0 || artist.length >= 101) {
-      errMessageTpm += "歌手名を0 ~ 100文字で入力してください。"
-    }
-    if (reason.length >= 1001) {
-      errMessageTpm += "おすすめポイントを1000文字以内で入力してください。"
-    }
-    if (errMessageTpm != "") {
-      setErrMessage(errMessageTpm)
-      return
-    }
-
-    axiosBase.post(`/register?situation=${situation}&name=${name}&artist=${artist}&reason=${reason}`)
-      .then((ret) => {
-        setName("");
-        setReason("");
-        setArtist("");
-        setErrMessage("")
-        // SWRがrefetchを行う
-        mutate(`${apiURL}?&search=${search}`);
-      })
-      // Go側でエラーがあった場合
-      .catch((err) => {
-        console.log("err--------------------------" + JSON.stringify(err))
-        router.push("/_error");
-      });
-  };
 
 
   // 投稿ファームのselectタグ生成
@@ -99,7 +67,7 @@ const Home: NextPage = () => {
 
           {/* 投稿フォーム */}
           {isNew ?
-            <Register situations={situations} setSituation={setSituation} name={name} setName={setName} artist={artist} setArtist={setArtist} reason={reason} setReason={setReason} sendRegister={sendRegister} setIsNew={setIsNew} /> :
+            <Register situations={situations} setSituation={setSituation} name={name} setName={setName} artist={artist} setArtist={setArtist} reason={reason} setReason={setReason} sendRegister={sendRegister} setIsNew={setIsNew} situation={situation} setErrMessage={setErrMessage} search={search} /> :
             <p></p>
           }
 

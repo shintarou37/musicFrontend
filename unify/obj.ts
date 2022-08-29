@@ -37,6 +37,9 @@ export interface MusicObj {
     setReason: Function
     sendRegister: any
     setIsNew: Function
+    situation: string
+    setErrMessage: Function
+    search: string
   }
   
   export interface listArg{
