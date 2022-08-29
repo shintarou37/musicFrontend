@@ -24,11 +24,13 @@ export default function Register(props: registerArg) {
       <textarea className={styles.postInput} value={props.reason} onChange={(e) => props.setReason(e.target.value)}></textarea><br></br>
       <button className={styles.postBtm} type="submit" onClick={
         async () => {
+          // バリデーション
           const retValidate: boolean = validateRegister(props.name, props.artist, props.reason, props.setErrMessage)
           if(!retValidate){
             return
           }
 
+          // 登録
           const ret: boolean = await sendRegister(props.name, props.artist, props.reason, props.situation)
           if (ret == true) {
             props.setName("");
