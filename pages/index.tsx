@@ -1,11 +1,9 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import useSWR, { useSWRConfig } from 'swr'
+import useSWR from 'swr'
 import { useState } from 'react'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { apiURL, axiosBase } from '../unify/const'
+import { apiURL } from '../unify/const'
 import { SituationObj } from '../unify/obj'
 import { sendRegister } from '../unify/func'
 import Header from './components/header'
@@ -25,7 +23,6 @@ const Home: NextPage = () => {
   }
 
   const router = useRouter();
-  const { mutate } = useSWRConfig();
   const [name, setName] = useState('');
   const [artist, setArtist] = useState('');
   const [reason, setReason] = useState('');
@@ -48,31 +45,27 @@ const Home: NextPage = () => {
 
   return (
     <div >
-      <Header/>
-
+      <Header />
       {/* 検索欄 */}
-      {Mst_situation ?
-        <Search Mst_situation={Mst_situation} search={search} setSearch={setSearch} /> :
-        <p></p>
+      {Mst_situation &&
+        <Search Mst_situation={Mst_situation} search={search} setSearch={setSearch} />
       }
       <div className={styles.container}>
-      <p className={`${styles.new}`} onClick={() => { isNew ? setIsNew(false) : setIsNew(true); }}>投稿する</p>
+        <p className={`${styles.new}`} onClick={() => { isNew ? setIsNew(false) : setIsNew(true); }}>投稿する</p>
         <main className={styles.main}>
-
           {/* エラーメッセージ */}
-          <p>{errMessage}</p>
+          {errMessage &&
+            <p>{errMessage}</p>
+          }
 
           {/* 投稿フォーム */}
-          {isNew ?
-            <Register situations={situations} setSituation={setSituation} name={name} setName={setName} artist={artist} setArtist={setArtist} reason={reason} setReason={setReason} sendRegister={sendRegister} setIsNew={setIsNew} situation={situation} setErrMessage={setErrMessage} search={search} /> :
-            <p></p>
+          {isNew &&
+            <Register situations={situations} setSituation={setSituation} name={name} setName={setName} artist={artist} setArtist={setArtist} reason={reason} setReason={setReason} sendRegister={sendRegister} setIsNew={setIsNew} situation={situation} setErrMessage={setErrMessage} search={search} />
           }
 
           {/* 一覧 */}
-          {data ?
+          {data &&
             <List music={JSON.parse(data.Music)} />
-            :
-            <p></p>
           }
         </main>
       </div>

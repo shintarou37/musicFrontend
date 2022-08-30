@@ -1,4 +1,5 @@
 import { axiosBase } from './const'
+
 export const sendRegister = (name: string, artist: string, reason: string, situation: string) => {
     return axiosBase.post(`/register?situation=${situation}&name=${name}&artist=${artist}&reason=${reason}`)
         .then(() => {
