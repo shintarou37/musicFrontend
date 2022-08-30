@@ -48,7 +48,7 @@ const Home: NextPage = () => {
 
   return (
     <div >
-      <Header isNew={isNew} setIsNew={setIsNew} />
+      <Header/>
 
       {/* 検索欄 */}
       {Mst_situation ?
