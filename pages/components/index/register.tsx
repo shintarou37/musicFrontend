@@ -1,10 +1,10 @@
-import styles from '../../styles/Home.module.css'
-import { registerArg } from '../../unify/obj'
-import { sendRegister } from '../../unify/func'
+import styles from '../../../styles/Home.module.css'
+import { registerArg } from '../../../unify/obj'
+import { sendRegister } from '../../../unify/func'
 import { useRouter } from 'next/router'
 import { useSWRConfig } from 'swr'
-import { apiURL, axiosBase } from '../../unify/const'
-import { validateRegister } from '../../unify/validate'
+import { apiURL, axiosBase } from '../../../unify/const'
+import { validateRegister } from '../../../unify/validate'
 
 export default function Register(props: registerArg) {
   const router = useRouter();

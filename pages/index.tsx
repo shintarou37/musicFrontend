@@ -9,9 +9,9 @@ import { apiURL, axiosBase } from '../unify/const'
 import { SituationObj } from '../unify/obj'
 import { sendRegister } from '../unify/func'
 import Header from './components/header'
-import Search from './components/search'
-import Register from './components/register'
-import List from './components/list'
+import Search from './components/index/search'
+import Register from './components/index/register'
+import List from './components/index/list'
 
 const Home: NextPage = () => {
   const fetcher = async (address: string) => {
