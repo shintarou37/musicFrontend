@@ -45,3 +45,7 @@ export interface MusicObj {
   export interface listArg{
     music: MusicObj[]
   }
+  export interface detailListArg{
+    data: MusicObj
+    createdAt: string
+  }
