@@ -6,10 +6,10 @@ import { useRouter } from 'next/router'
 import { apiURL } from '../unify/const'
 import { SituationObj } from '../unify/obj'
 import { sendRegister } from '../unify/func'
-import Header from './components/header'
-import Search from './components/index/search'
-import Register from './components/index/register'
-import List from './components/index/list'
+import Header from '../components/header'
+import Search from '../components/index/search'
+import Register from '../components/index/register'
+import List from '../components/index/list'
 
 const Home: NextPage = () => {
   const fetcher = async (address: string) => {

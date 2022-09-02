@@ -7,8 +7,8 @@ import Head from 'next/head'
 
 import styles from '../styles/Home.module.css'
 import { apiURL } from '../unify/const'
-import Header from './components/header'
-import List from './components/details/list'
+import Header from '../components/header'
+import List from '../components/details/list'
 
 export default function Detail() {
   const router = useRouter();

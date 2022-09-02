@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
-import styles from '../../../styles/Home.module.css'
-import { detailListArg } from '../../../unify/obj'
+import styles from '../../styles/Home.module.css'
+import { detailListArg } from '../../unify/obj'
 
 export default function List(props: detailListArg) {
     // keyはユニークIDとして付与している
@@ -9,7 +9,7 @@ export default function List(props: detailListArg) {
         <h1>詳細画面</h1>
         <div>
             <p>シチュエーション</p>
-            <span className={styles.listName}>{props.data.Mst_situationName}</span>
+            <span className={styles.listName}>{props.data.Mst_situationName && props.data.Mst_situationName}</span>
             <p>曲名</p>
             <span className={styles.listName}>{props.data.Name}</span>
             <p>歌手名</p>
