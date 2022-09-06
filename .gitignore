@@ -34,3 +34,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+unify/1.json
+.gitignore
+.env.development
+.env.production
+package-lock.json
