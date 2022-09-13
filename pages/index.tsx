@@ -36,7 +36,7 @@ const Home: NextPage = () => {
   let situations;
   let Mst_situation;
   if (data) {
-    Mst_situation = JSON.parse(data.Mst_situation);
+    Mst_situation = data.Mst_situation;
     situations = Mst_situation.map((value: SituationObj, key: number) => {
       // keyはユニークIDとして付与している
       return <option value={value.ID} key={key}>{value.Name}</option>
@@ -65,7 +65,7 @@ const Home: NextPage = () => {
 
           {/* 一覧 */}
           {data &&
-            <List music={JSON.parse(data.Music)} />
+            <List music={data.Music} />
           }
         </main>
       </div>
