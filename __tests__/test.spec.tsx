@@ -29,5 +29,9 @@ describe("LIST", () => {
     expect(screen.getByText("1つ目です")).toBeTruthy();
     expect(screen.getByText("名前です")).toBeTruthy();
     expect(screen.getByText("理由です")).toBeTruthy();
+    expect(screen.getByText("シチュエーション")).toBeTruthy();
+    expect(screen.getByText("曲名")).toBeTruthy();
+    expect(screen.getByText("歌手名")).toBeTruthy();
+    expect(screen.getByText("おすすめポイント")).toBeTruthy();
   });
 });
