@@ -51,7 +51,7 @@ const Home: NextPage = () => {
         <Search Mst_situation={Mst_situation} search={search} setSearch={setSearch} />
       }
       <div className={styles.container}>
-        <p className={`${styles.new}`} onClick={() => { isNew ? setIsNew(false) : setIsNew(true); }}>投稿する</p>
+        <button className={styles.new} onClick={() => { isNew ? setIsNew(false) : setIsNew(true); }}>投稿フォーム</button>
         <main className={styles.main}>
           {/* エラーメッセージ */}
           {errMessage &&

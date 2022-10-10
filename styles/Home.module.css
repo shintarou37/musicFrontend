@@ -128,6 +128,13 @@
   }
 }
 
+/*
+  汎用CSS
+*/
+.fw_bold{
+  font-weight: bold;
+}
+
 .header{
   height: 80px;
   display: flex;
@@ -146,8 +153,16 @@
 }
 
 .new{
+  float: right;
+  margin: 5px 0 0 5px;
+  background-color: #285ac8;
+  font-weight: 700;
+  color: white;
   font-size: 15px;
   text-align: right;
+  border: none;
+  border-radius: 4px;
+  padding: 8px;
 }
 
 .contents {
@@ -173,10 +188,12 @@
 }
 /* Register */
 .situation{
+  margin: 3px 0 10px 0;
   width: 200px;
   height: 22px;
 }
 .postInput{
+  margin: 3px 0 10px 0;
   width: 200px;
 }
 

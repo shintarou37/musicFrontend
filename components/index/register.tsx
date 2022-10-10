@@ -11,16 +11,16 @@ export default function Register(props: registerArg) {
   const { mutate } = useSWRConfig();
   return (
     <div>
-      <label>シチュエーション</label><br></br>
+      <label className={styles.fw_bold}>シチュエーション</label><br></br>
       <select className={styles.situation} onChange={(e) => props.setSituation(e.target.value)}>
         {props.situations}
       </select>
-      <br></br>
-      <label>曲名（1 ~ 100文字）</label><br></br>
+      <br ></br>
+      <label className={styles.fw_bold}>曲名（1 ~ 100文字）</label><br></br>
       <input className={styles.postInput} type="text" value={props.name} onChange={(e) => props.setName(e.target.value)} /><br></br>
-      <label>歌手名（1 ~ 100文字）</label><br></br>
+      <label className={styles.fw_bold}>歌手名（1 ~ 100文字）</label><br></br>
       <input className={styles.postInput} type="text" value={props.artist} onChange={(e) => props.setArtist(e.target.value)} /><br></br>
-      <label>おすすめポイント（1 ~ 1000文字）</label><br></br>
+      <label className={styles.fw_bold}>おすすめポイント（1 ~ 1000文字）</label><br></br>
       <textarea className={styles.postInput} value={props.reason} onChange={(e) => props.setReason(e.target.value)}></textarea><br></br>
       <button className={styles.postBtm} type="submit" onClick={
         async () => {
