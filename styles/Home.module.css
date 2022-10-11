@@ -184,7 +184,6 @@
   border-bottom: solid #0070f3;
   border-width: 4px;
   color: #0070f3;
-
 }
 /* Register */
 .situation{
@@ -194,20 +193,26 @@
 }
 .postInput{
   margin: 3px 0 10px 0;
-  width: 200px;
+  width: 350px;
+}
+.postTextArea{
+  margin: 3px 0 10px 0;
+  width: 350px;
+  height: 100px;
 }
 
 .postBtm{
-  margin: 5px;
-  border: none; 
-  background-color: #00CCFF;
+  background-color: #285ac8;
+  font-weight: 700;
   color: white;
-  width: 120px;
-  font-size: 16pt;
-  border-radius: 5px;
+  font-size: 15px;
+  border: none;
+  border-radius: 4px;
+  padding: 8px;
 }
 .postClose{
-  margin-left: 40px;
+  float: right;
+  font-size: large;
 }
 
 /* index.tsx */
