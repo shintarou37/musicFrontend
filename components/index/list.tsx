@@ -8,14 +8,14 @@ export default function List(props: listArg) {
         let detalPath = `/detal/?id=${value.ID}`;
         // keyはユニークIDとして付与している
         return <div key={key} className={styles.list}>
-            <p>シチュエーション</p>
-            <span className={styles.listName}>{value.Mst_situationName}</span>
-            <p>曲名</p>
-            <span className={styles.listName}>{value.Name}</span>
-            <p>歌手名</p>
-            <span className={styles.listName}>{value.Artist}</span>
-            <p>おすすめポイント</p>
-            <span className={styles.listName}>{value.Reason}</span><br></br>
+            <p className={styles.listName}>シチュエーション</p>
+            <span>{value.Mst_situationName}</span>
+            <p className={styles.listName}>曲名</p>
+            <span >{value.Name}</span>
+            <p className={styles.listName}>歌手名</p>
+            <span>{value.Artist}</span>
+            <p className={styles.listName}>おすすめポイント</p>
+            <span >{value.Reason}</span><br></br>
             <Link href={detalPath}>
                 <a>詳細</a>
             </Link>

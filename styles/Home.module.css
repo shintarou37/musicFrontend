@@ -223,10 +223,14 @@
 }
 .list{
   width: 350px;
-  background-color: rgba(15, 16, 16, 0.026);
-  margin-top: 10px;
+  margin: 5px;
+  border: 1px solid silver;
+  padding: 0 10px;
+  box-shadow: 3px 3px 3px silver;
+  background-color: rgba(7, 244, 220, 0.052);
 }
 .listName{
+  border-bottom: 1px solid silver;
   font-weight: bold;
 }
 
