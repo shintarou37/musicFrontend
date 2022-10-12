@@ -57,7 +57,7 @@ const Home: NextPage = () => {
         <main className={styles.main}>
           {/* エラーメッセージ */}
           {errMessage &&
-            <p>{errMessage}</p>
+            <p className={styles.red}>{errMessage}</p>
           }
 
           {/* 投稿フォーム */}

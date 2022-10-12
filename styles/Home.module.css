@@ -134,7 +134,9 @@
 .fw_bold{
   font-weight: bold;
 }
-
+.red{
+  color: red;
+}
 .header{
   height: 80px;
   display: flex;
