@@ -15,9 +15,9 @@ export default function List(props: listArg) {
             <p className={styles.listName}>歌手名</p>
             <span>{value.Artist}</span>
             <p className={styles.listName}>おすすめポイント</p>
-            <span >{value.Reason}</span><br></br>
+            <span className={styles.recomendPoint}>{value.Reason}</span><br></br>
             <Link href={detalPath}>
-                <a>詳細</a>
+                <p className={styles.detailBtn}>詳細</p>
             </Link>
         </div>
     })
