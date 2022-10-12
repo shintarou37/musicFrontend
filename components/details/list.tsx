@@ -8,20 +8,20 @@ export default function List(props: detailListArg) {
     return <div className={`${styles.detailContainer}`}>
         <h1>詳細画面</h1>
         <div>
-            <p>シチュエーション</p>
-            <span className={styles.listName}>{props.data.Mst_situationName && props.data.Mst_situationName}</span>
-            <p>曲名</p>
-            <span className={styles.listName}>{props.data.Name}</span>
-            <p>歌手名</p>
-            <span className={styles.listName}>{props.data.Artist}</span>
-            <p>おすすめポイント</p>
-            <span className={styles.listName}>{props.data.Reason}</span>
-            <p>投稿日</p>
-            <span className={styles.listName}>{props.createdAt}</span>
+            <p className={styles.fw_bold}>シチュエーション</p>
+            <span>{props.data.Mst_situationName && props.data.Mst_situationName}</span>
+            <p className={styles.fw_bold}>曲名</p>
+            <span>{props.data.Name}</span>
+            <p className={styles.fw_bold}>歌手名</p>
+            <span>{props.data.Artist}</span>
+            <p className={styles.fw_bold}>おすすめポイント</p>
+            <span>{props.data.Reason}</span>
+            <p className={styles.fw_bold}>投稿日</p>
+            <span>{props.createdAt}</span>
         </div>
         <br></br>
         <Link href="/">
-            <a>トップ画面へ戻る</a>
+            <p className={styles.topBtn}>トップ画面へ戻る</p>
         </Link>
     </div>
 
