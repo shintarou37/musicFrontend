@@ -49,7 +49,6 @@ describe("LIST", () => {
     expect(screen.getByText("おすすめポイント")).toBeTruthy();
     expect(screen.getByText("詳細")).toBeTruthy();
 
-    expect(screen.getByRole("link")).toBeTruthy();
   });
 });
 
@@ -87,6 +86,5 @@ describe("DetailList", () => {
     expect(screen.getByText("おすすめポイント")).toBeTruthy();
 
     expect(screen.getByRole("heading")).toBeTruthy();
-    expect(screen.getByRole("link")).toBeTruthy();
   });
 });
