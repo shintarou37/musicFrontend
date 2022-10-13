@@ -6,7 +6,7 @@ jobs:
     steps:
       - checkout
       - run: 
-          name: Node
+          name: テストを実行する
           command: |
             node --version
             npm install
