@@ -19,7 +19,7 @@ export default function Header() {
         </Link>
         {!cookies.token &&
         <div>
-          <Link href="/signup">
+          <Link href="/users/signup">
             <a className={styles.rightLogo}>新規登録</a>
           </Link>
           <Link href="/signin">
