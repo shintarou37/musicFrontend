@@ -11,3 +11,15 @@ export const sendRegister = (name: string, artist: string, reason: string, situa
             return false
         });
 };
+
+export const sendSignUp = (name: string, password: string) => {
+    return axiosBase.post(`/signup?name=${name}&password=${password}`)
+        .then(() => {
+            return true
+        })
+        // Go側でエラーがあった場合
+        .catch((err) => {
+            console.log("sendSignUp err--------------------------" + JSON.stringify(err))
+            return false
+        });
+};
