@@ -34,8 +34,7 @@ export default function Register() {
                     // 登録
                     const ret: boolean = await sendSignUp(name, password)
                     if (ret == true) {
-                        // setErrMessage("");
-                        router.push("/");
+                        router.push("/users/signin");
                     }
                     else {
                         router.push("/_error");
