@@ -7,7 +7,34 @@ export const sendRegister = (name: string, artist: string, reason: string, situa
         })
         // Go側でエラーがあった場合
         .catch((err) => {
-            console.log("err--------------------------" + JSON.stringify(err))
             return false
+        });
+};
+
+export const sendSignUp = (name: string, password: string) => {
+    return axiosBase.post(`/signup?name=${name}&password=${password}`)
+        .then(() => {
+            return true
+        })
+        // Go側でエラーがあった場合
+        .catch((err) => {
+            return false
+        });
+};
+
+export const sendSignIn = (name: string, password: string) => {
+    return axiosBase.post(`/signin?name=${name}&password=${password}`)
+        .then(() => {
+            return 200
+        })
+        // Go側でエラーがあった場合
+        .catch((err) => {
+            if(err.response.status == 401){
+                return 401
+            }
+            if(err.response.status == 406){
+                return 406
+            }
+            return 200
         });
 };

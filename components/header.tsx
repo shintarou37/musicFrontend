@@ -1,9 +1,12 @@
 import Head from 'next/head'
 import Link from 'next/link'
 
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Header.module.css'
+import { parseCookies, setCookie, destroyCookie } from 'nookies'
 
 export default function Header() {
+  const cookies = parseCookies();
+
   return (
     <div>
       <Head>
@@ -14,6 +17,20 @@ export default function Header() {
         <Link href="/">
           <a className={styles.logo}>オンレコ</a>
         </Link>
+          {cookies.token
+            ?
+            <p>ようこそ {cookies.name} さん&nbsp;&nbsp;</p>
+            :
+            <div>
+            <Link href="/users/signup">
+              <a className={styles.rightLogo}>新規登録</a>
+            </Link>
+            <Link href="/users/signin">
+              <a className={styles.rightLogo}>ログイン</a>
+            </Link>
+          </div>
+          }
+
       </header>
     </div>
   )

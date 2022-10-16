@@ -18,8 +18,6 @@ describe("Header", () => {
     // screen.debug();
 
     expect(screen.getByText("オンレコ")).toBeTruthy();
-    // aタグ
-    expect(screen.getByRole("link")).toBeTruthy();
   });
 });
 
@@ -30,7 +28,6 @@ describe("Home", () => {
     expect(screen.getByText("オンレコ")).toBeTruthy();
     expect(screen.getByText("投稿フォーム")).toBeTruthy();
 
-    expect(screen.getByRole("link")).toBeTruthy();
     expect(screen.getByRole("button")).toBeTruthy();
 
   });
