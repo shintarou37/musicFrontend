@@ -48,4 +48,5 @@ export interface MusicObj {
   export interface detailListArg{
     data: MusicObj
     createdAt: string
+    updatedAt: string
   }

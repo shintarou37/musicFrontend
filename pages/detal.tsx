@@ -38,6 +38,7 @@ export default function Detail() {
   // dataがない場合に戻り値を渡すと一瞬レイアウトが崩れる
   if (data) {
     const createdAt = moment(data.CreatedAt)
+    const updatedAt = moment(data.UpdatedAt)
     return (
       <div>
         <Header />
@@ -52,7 +53,7 @@ export default function Detail() {
         {(isEdit && cookies.token) &&
           <Edit data={data} setisEdit={setisEdit} setErrMessage={setErrMessage} />
         }
-        <List data={data.Music} createdAt={createdAt.format('YYYY/MM/DD HH:mm')} />
+        <List data={data.Music} createdAt={createdAt.format('YYYY/MM/DD HH:mm')} updatedAt={updatedAt.format('YYYY/MM/DD HH:mm')} />
       </div>
     )
   }

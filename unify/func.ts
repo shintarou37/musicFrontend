@@ -12,8 +12,8 @@ export const sendRegister = (name: string, artist: string, reason: string, situa
         });
 };
 
-export const sendUpdate = (name: string, artist: string, reason: string, situation: string) => {
-    return axiosBase.post(`/update?situation=${situation}&name=${name}&artist=${artist}&reason=${reason}`)
+export const sendUpdate = (id: number, name: string, artist: string, reason: string, situation: string) => {
+    return axiosBase.post(`/update?id=${id}&situation=${situation}&name=${name}&artist=${artist}&reason=${reason}`)
         .then(() => {
             return true
         })

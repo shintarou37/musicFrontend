@@ -16,6 +16,8 @@ export default function List(props: detailListArg) {
             <span className={styles.breakWord}>{props.data.Artist}</span>
             <p className={styles.fw_bold}>おすすめポイント</p>
             <span className={styles.breakWord}>{props.data.Reason}</span>
+            <p className={styles.fw_bold}>更新日</p>
+            <span>{props.updatedAt}</span>
             <p className={styles.fw_bold}>投稿日</p>
             <span>{props.createdAt}</span>
         </div>

@@ -45,12 +45,13 @@ export default function Edit(props: any) {
           }
 
           // 更新
-          const ret: boolean = await sendUpdate(name, artist, reason, situation)
+          const ret: boolean = await sendUpdate(props.data.Music.ID, name, artist, reason, situation)
           if (ret == true) {
             setName("");
             setReason("");
             setArtist("");
             props.setErrMessage("");
+            props.setisEdit(false);
             mutate(`${apiURL}/detail?id=${props.data.Music.ID}`);
           }
           else {
