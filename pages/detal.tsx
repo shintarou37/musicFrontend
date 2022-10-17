@@ -4,14 +4,20 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 import moment from 'moment';
 import Head from 'next/head'
-
+import { SituationObj } from '../unify/obj'
 import styles from '../styles/Home.module.css'
 import { apiURL } from '../unify/const'
 import Header from '../components/header'
 import List from '../components/details/list'
+import Edit from '../components/details/edit'
+import { parseCookies, setCookie, destroyCookie } from 'nookies'
 
 export default function Detail() {
   const router = useRouter();
+
+  const [isEdit, setisEdit] = useState(false);
+  const [errMessage, setErrMessage] = useState('');
+  const cookies = parseCookies();
 
   // クエリパラメーターを取得する
   const { id } = router.query;
@@ -23,19 +29,30 @@ export default function Detail() {
     if (!res.ok) {
       router.push("/_error");
     }
-  
+
     return res.json();
   }
 
   const { data, error } = useSWR(`${apiURL}/detail?id=${id}`, fetcher);
 
   // dataがない場合に戻り値を渡すと一瞬レイアウトが崩れる
-  if(data){
+  if (data) {
     const createdAt = moment(data.CreatedAt)
     return (
       <div>
-        <Header/>
-        <List data={data} createdAt={createdAt.format('YYYY/MM/DD HH:mm')}/>
+        <Header />
+        {(!isEdit && cookies.token) &&
+          <button className={styles.new} onClick={() => { isEdit ? setisEdit(false) : setisEdit(true); }}>投稿を編集</button>
+        }
+        {/* エラーメッセージ */}
+        {errMessage &&
+          <p className={styles.red}>{errMessage}</p>
+        }
+        {/* 編集フォーム */}
+        {(isEdit && cookies.token) &&
+          <Edit data={data} setisEdit={setisEdit} setErrMessage={setErrMessage} />
+        }
+        <List data={data.Music} createdAt={createdAt.format('YYYY/MM/DD HH:mm')} />
       </div>
     )
   }
