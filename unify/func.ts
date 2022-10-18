@@ -37,10 +37,13 @@ export const sendUpdate = (id: number, name: string, artist: string, reason: str
 export const sendSignUp = (name: string, password: string) => {
     return axiosBase.post(`/signup?name=${name}&password=${password}`)
         .then(() => {
-            return true
+            return 200
         })
         .catch((err) => {
-            return false
+            if (err.response.status == 400) {
+                return 400
+            }
+            return 500
         });
 };
 
