@@ -37,8 +37,8 @@ export default function Detail() {
 
   // dataがない場合に戻り値を渡すと一瞬レイアウトが崩れる
   if (data) {
-    const createdAt = moment(data.Music.CreatedAt)
-    const updatedAt = moment(data.Music.UpdatedAt)
+    const createdAt = moment(data.Music.CreatedAt);
+    const updatedAt = moment(data.Music.UpdatedAt);
     return (
       <div>
         <Header />
