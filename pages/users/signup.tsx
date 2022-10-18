@@ -4,8 +4,9 @@ import SignUpForm from '../../components/users/signupForm'
 import { parseCookies, setCookie, destroyCookie } from 'nookies'
 
 export default function Form() {
-  destroyCookie(null, 'token')
-  destroyCookie(null, 'name')
+  destroyCookie(null, 'token');
+  destroyCookie(null, 'name');
+  destroyCookie(null, 'id');
     return (
       <div className={styles.container}>
         <Header/>

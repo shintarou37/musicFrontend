@@ -2,7 +2,15 @@ import { axiosBase } from './const'
 import { parseCookies, setCookie, destroyCookie } from 'nookies'
 
 export const sendRegister = (name: string, artist: string, reason: string, situation: string) => {
-    return axiosBase.post(`/register?situation=${situation}&name=${name}&artist=${artist}&reason=${reason}`)
+    const cookies = parseCookies();
+    let userID;
+    if(cookies.id){
+        userID = cookies.id;
+    }
+    else{
+        userID = 0;
+    }
+    return axiosBase.post(`/register?situation=${situation}&name=${name}&artist=${artist}&reason=${reason}&userID=${userID}`)
         .then(() => {
             return true
         })
@@ -31,7 +39,6 @@ export const sendSignUp = (name: string, password: string) => {
         .then(() => {
             return true
         })
-        // Go側でエラーがあった場合
         .catch((err) => {
             return false
         });
@@ -46,9 +53,11 @@ export const sendSignIn = (name: string, password: string) => {
             setCookie(null, 'token', res.data.Token, {
                 maxAge: 60 * 60,
             })
+            setCookie(null, 'id', res.data.ID, {
+                maxAge: 60 * 60,
+            })
             return 200
         })
-        // Go側でエラーがあった場合
         .catch((err) => {
             if (err.response.status == 401) {
                 return 401

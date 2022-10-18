@@ -37,12 +37,12 @@ export default function Detail() {
 
   // dataがない場合に戻り値を渡すと一瞬レイアウトが崩れる
   if (data) {
-    const createdAt = moment(data.CreatedAt)
-    const updatedAt = moment(data.UpdatedAt)
+    const createdAt = moment(data.Music.CreatedAt)
+    const updatedAt = moment(data.Music.UpdatedAt)
     return (
       <div>
         <Header />
-        {(!isEdit && cookies.token) &&
+        {(!isEdit && cookies.token && cookies.id == data.Music.UserID) &&
           <button className={styles.new} onClick={() => { isEdit ? setisEdit(false) : setisEdit(true); }}>投稿を編集</button>
         }
         {/* エラーメッセージ */}
@@ -50,7 +50,7 @@ export default function Detail() {
           <p className={styles.red}>{errMessage}</p>
         }
         {/* 編集フォーム */}
-        {(isEdit && cookies.token) &&
+        {(isEdit && cookies.token && cookies.id == data.Music.UserID) &&
           <Edit data={data} setisEdit={setisEdit} setErrMessage={setErrMessage} />
         }
         <List data={data.Music} createdAt={createdAt.format('YYYY/MM/DD HH:mm')} updatedAt={updatedAt.format('YYYY/MM/DD HH:mm')} />
