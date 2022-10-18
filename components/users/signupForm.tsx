@@ -32,14 +32,16 @@ export default function Register() {
                     }
 
                     // 登録
-                    const ret: boolean = await sendSignUp(name, password)
-                    if (ret == true) {
+                    const ret: number = await sendSignUp(name, password)
+                    if (ret == 200) {
                         router.push("/users/signin");
                     }
-                    else {
+                    else if(ret == 400) {
+                        setErrMessage("入力した名前は既に登録されています。")
+                    }
+                    else if(ret == 500) {
                         router.push("/_error");
                     }
-
                 }
             }>登録する</button>
             <br></br>

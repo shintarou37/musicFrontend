@@ -4,6 +4,7 @@ export interface MusicObj {
     "Artist": string,
     "Reason": string,
     "Mst_situationName": string,
+    "UserName": string,
   }
   
   export interface SituationObj {
@@ -48,4 +49,5 @@ export interface MusicObj {
   export interface detailListArg{
     data: MusicObj
     createdAt: string
+    updatedAt: string
   }
