@@ -15,11 +15,14 @@ export const sendRegister = (name: string, artist: string, reason: string, situa
 export const sendUpdate = (id: number, name: string, artist: string, reason: string, situation: string) => {
     return axiosBase.post(`/update?id=${id}&situation=${situation}&name=${name}&artist=${artist}&reason=${reason}`)
         .then(() => {
-            return true
+            return 200
         })
-        // Go側でエラーがあった場合
         .catch((err) => {
-            return false
+            // JWT認証エラー
+            if (err.response.status == 401) {
+                return 401
+            }
+            return 400
         });
 };
 
@@ -39,20 +42,18 @@ export const sendSignIn = (name: string, password: string) => {
         .then((res) => {
             setCookie(null, 'name', res.data.Name, {
                 maxAge: 60 * 60,
-                path: '/',
             })
             setCookie(null, 'token', res.data.Token, {
                 maxAge: 60 * 60,
-                path: '/',
             })
             return 200
         })
         // Go側でエラーがあった場合
         .catch((err) => {
-            if(err.response.status == 401){
+            if (err.response.status == 401) {
                 return 401
             }
-            if(err.response.status == 406){
+            if (err.response.status == 406) {
                 return 406
             }
             return 200
