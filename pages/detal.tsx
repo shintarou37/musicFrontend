@@ -1,10 +1,7 @@
-import Link from 'next/link'
 import useSWR, { useSWRConfig } from 'swr'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import moment from 'moment';
-import Head from 'next/head'
-import { SituationObj } from '../unify/obj'
 import styles from '../styles/Home.module.css'
 import { apiURL } from '../unify/const'
 import Header from '../components/header'
@@ -37,11 +34,14 @@ export default function Detail() {
 
   // dataがない場合に戻り値を渡すと一瞬レイアウトが崩れる
   if (data) {
+    // 登録・更新日時のフォーマットを整える
     const createdAt = moment(data.Music.CreatedAt);
     const updatedAt = moment(data.Music.UpdatedAt);
     return (
       <div>
         <Header />
+
+        {/* 編集フォームボタン */}
         {(!isEdit && cookies.token && cookies.id == data.Music.UserID) &&
           <button className={styles.new} onClick={() => { isEdit ? setisEdit(false) : setisEdit(true); }}>投稿を編集</button>
         }
