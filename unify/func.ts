@@ -12,25 +12,25 @@ export const sendRegister = (name: string, artist: string, reason: string, situa
     }
     return axiosBase.post(`/register?situation=${situation}&name=${name}&artist=${artist}&reason=${reason}&userID=${userID}`)
         .then(() => {
-            return true
+            return true;
         })
         // Go側でエラーがあった場合
-        .catch((err) => {
-            return false
+        .catch(() => {
+            return false;
         });
 };
 
 export const sendUpdate = (id: number, name: string, artist: string, reason: string, situation: string) => {
     return axiosBase.post(`/update?id=${id}&situation=${situation}&name=${name}&artist=${artist}&reason=${reason}`)
         .then(() => {
-            return 200
+            return 200;
         })
         .catch((err) => {
             // JWT認証エラー
             if (err.response.status == 401) {
-                return 401
+                return 401;
             }
-            return 400
+            return 400;
         });
 };
 
@@ -40,16 +40,18 @@ export const sendSignUp = (name: string, password: string) => {
             return 200
         })
         .catch((err) => {
+            // 入力した名前が既に存在している場合
             if (err.response.status == 400) {
-                return 400
+                return 400;
             }
-            return 500
+            return 500;
         });
 };
 
 export const sendSignIn = (name: string, password: string) => {
     return axiosBase.post(`/signin?name=${name}&password=${password}`)
         .then((res) => {
+            // レスポンス内容をCookieに保存する
             setCookie(null, 'name', res.data.Name, {
                 maxAge: 60 * 60,
             })
@@ -59,15 +61,18 @@ export const sendSignIn = (name: string, password: string) => {
             setCookie(null, 'id', res.data.ID, {
                 maxAge: 60 * 60,
             })
-            return 200
+
+            return 500;
         })
         .catch((err) => {
+            // 名前がDBに存在しない場合
             if (err.response.status == 401) {
-                return 401
+                return 401;
             }
+            // パスワード間違い;
             if (err.response.status == 406) {
-                return 406
+                return 406;
             }
-            return 200
+            return 500;
         });
 };
