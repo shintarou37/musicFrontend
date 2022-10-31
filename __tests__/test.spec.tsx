@@ -12,7 +12,7 @@ import { render, screen } from "@testing-library/react";
 const music: any = [{Artist: "1", ID: 1, Mst_situationName: "1つ目です", Name: "名前です", Reason: "理由です"}]
 const situations: any = [{ID: 1,  Name: "名前です"}]
 const setFunction = (()=>{})
-const MusicObj: MusicObj = {Artist: "1", ID: 1, Mst_situationName: "1つ目です", Name: "名前です", Reason: "理由です"};
+const MusicObj: MusicObj = {Artist: "1", ID: 1, Mst_situationName: "1つ目です", Name: "名前です", Reason: "理由です", UserName: "UserName"};
 
 
 describe("Header", () => {
@@ -75,7 +75,7 @@ describe("Register", () => {
 
 describe("DetailList", () => {
   it("DetailList 表示されること", () => {
-    render(<DetailList data={MusicObj} createdAt={"2000/01/01 11:11"}/>);
+    render(<DetailList data={MusicObj} createdAt={"2000/01/01 11:11"} updatedAt={"2000/01/01 11:11"}/>);
     
     expect(screen.getByText("1つ目です")).toBeTruthy();
     expect(screen.getByText("名前です")).toBeTruthy();
