@@ -1,9 +1,12 @@
 import List from '../components/index/list'
 import DetailList from '../components/details/list'
 import Register from '../components/index/register'
+import SignInForm from '../components/users/signinForm'
+import SignUpForm from '../components/users/signupForm'
 import { listArg, MusicObj, detailListArg } from '../unify/obj'
 import Header from '../components/header'
 import Home from '../pages/index'
+import PageFormSign from '../pages/users/signin'
 import { render, screen } from "@testing-library/react";
 
 const music: any = [{Artist: "1", ID: 1, Mst_situationName: "1つ目です", Name: "名前です", Reason: "理由です"}]
@@ -83,5 +86,75 @@ describe("DetailList", () => {
     expect(screen.getByText("おすすめポイント")).toBeTruthy();
 
     expect(screen.getByRole("heading")).toBeTruthy();
+  });
+});
+
+describe("UserSignIn", () => {
+  it("DetailList 表示されること", () => {
+    render(<SignInForm />);
+    
+    expect(screen.getByText("名前（1 ~ 10文字）")).toBeTruthy();
+    expect(screen.getByText("パスワード（8 ~ 16文字）")).toBeTruthy();
+    expect(screen.getByText("ログイン")).toBeTruthy();
+    expect(screen.getByText("トップ画面へ戻る")).toBeTruthy();
+
+    expect(screen.getByRole("heading")).toBeTruthy();
+    expect(screen.getByRole("button")).toBeTruthy();
+    expect(screen.getAllByRole("textbox")[0]).toBeTruthy();
+    expect(screen.getAllByRole("textbox")[1]).toBeTruthy();
+  });
+});
+
+describe("UserSignUp", () => {
+  it("SignUpForm 表示されること", () => {
+    render(<SignUpForm />);
+    
+    expect(screen.getByText("名前（1 ~ 10文字）")).toBeTruthy();
+    expect(screen.getByText("パスワード（8 ~ 16文字）")).toBeTruthy();
+    expect(screen.getByText("登録する")).toBeTruthy();
+    expect(screen.getByText("トップ画面へ戻る")).toBeTruthy();
+
+    expect(screen.getByRole("heading")).toBeTruthy();
+    expect(screen.getByRole("button")).toBeTruthy();
+    expect(screen.getAllByRole("textbox")[0]).toBeTruthy();
+    expect(screen.getAllByRole("textbox")[1]).toBeTruthy();
+  });
+});
+
+describe("UserSignIn", () => {
+  it("UserSignIn 表示されること", () => {
+    render(<SignInForm />);
+    
+    expect(screen.getByText("名前（1 ~ 10文字）")).toBeTruthy();
+    expect(screen.getByText("パスワード（8 ~ 16文字）")).toBeTruthy();
+    expect(screen.getByText("ログイン")).toBeTruthy();
+    expect(screen.getByText("トップ画面へ戻る")).toBeTruthy();
+
+    expect(screen.getByRole("heading")).toBeTruthy();
+    expect(screen.getByRole("button")).toBeTruthy();
+    expect(screen.getAllByRole("textbox")[0]).toBeTruthy();
+    expect(screen.getAllByRole("textbox")[1]).toBeTruthy();
+  });
+});
+
+describe("FormSign", () => {
+  it("FormSign 表示されること", () => {
+    render(<PageFormSign />);
+
+    expect(screen.getByText("オンレコ")).toBeTruthy();
+    expect(screen.getByText("新規登録")).toBeTruthy();
+    expect(screen.getAllByText("ログイン")).toHaveLength(2);
+    expect(screen.getByText("ログイン画面")).toBeTruthy();
+    expect(screen.getByText("名前（1 ~ 10文字）")).toBeTruthy();
+    expect(screen.getByText("パスワード（8 ~ 16文字）")).toBeTruthy();
+    expect(screen.getByText("トップ画面へ戻る")).toBeTruthy();
+
+    expect(screen.getByRole("heading")).toBeTruthy();
+    expect(screen.getAllByRole("link")[0]).toBeTruthy();
+    expect(screen.getAllByRole("link")[1]).toBeTruthy();
+    expect(screen.getAllByRole("link")[2]).toBeTruthy();
+    expect(screen.getByRole("button")).toBeTruthy();
+    expect(screen.getAllByRole("textbox")[0]).toBeTruthy();
+    expect(screen.getAllByRole("textbox")[1]).toBeTruthy();
   });
 });
