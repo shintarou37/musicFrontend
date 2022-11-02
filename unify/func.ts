@@ -62,7 +62,7 @@ export const sendSignIn = (name: string, password: string) => {
                 maxAge: 60 * 60,
             })
 
-            return 500;
+            return 200;
         })
         .catch((err) => {
             // 名前がDBに存在しない場合
