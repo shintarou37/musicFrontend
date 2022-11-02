@@ -26,13 +26,14 @@ export default function SignInForm() {
             <button className={styleUsers.postBtm} type="submit" onClick={
                 async () => {
                     // バリデーション
+                    setErrMessage("")
                     const retValidate: boolean = validateSignUp(name, password, setErrMessage)
                     if (!retValidate) {
                         return
                     }
 
                     // 登録
-                    const ret: number = await sendSignIn(name, password)
+                    const ret: number = await sendSignIn(name, password);
                     if (ret == 200) {
                         router.push("/");
                     }
