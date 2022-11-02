@@ -4,11 +4,11 @@ import { sendUpdate } from '../../unify/func'
 import { useRouter } from 'next/router'
 import { useSWRConfig } from 'swr'
 import { apiURL, axiosBase } from '../../unify/const'
-import { SituationObj } from '../../unify/obj'
+import { SituationObj, editArg } from '../../unify/obj'
 import { validateRegister } from '../../unify/validate'
 import { useState } from 'react'
 
-export default function Edit(props: any) {
+export default function Edit(props: editArg) {
   let situations;
   let Mst_situation;
   Mst_situation = props.data.Mst_situation;
