@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 
-import { MusicObj } from '../unify/obj'
+import { MusicObj, editForm, MusicObjEdit } from '../unify/obj'
 
 import Header from '../components/header'
 import IndexList from '../components/index/list'
@@ -14,6 +14,12 @@ const music: any = [{Artist: "1", ID: 1, Mst_situationName: "1つ目です", Nam
 const situations: any = [{ID: 1,  Name: "名前です"}]
 const setFunction = (()=>{})
 const MusicObj: MusicObj = {Artist: "1", ID: 1, Mst_situationName: "1つ目です", Name: "名前です", Reason: "理由です", UserName: "UserName"};
+const MusicObjEdit: MusicObjEdit = {Artist: "1", ID: 1, Mst_situationName: "1つ目です", Name: "名前です", Reason: "理由です", UserName: "UserName", "Mst_situationID": "1"};
+
+const editData: editForm = {
+  Mst_situation: situations,
+  Music: MusicObjEdit
+}
 
 describe("Header ファイル", () => {
   it("header 表示されること", () => {
@@ -86,34 +92,26 @@ describe("detailsディレクトリ", () => {
 
     expect(screen.getByRole("heading")).toBeTruthy();
   });
+
   it("DetailsEdit 表示されること", () => {
-    render(<DetailsEdit data={MusicObj} createdAt={"2000/01/01 11:11"} updatedAt={"3000/12/30 00:00"}/>);
+    render(<DetailsEdit data={editData} setisEdit={setFunction} setErrMessage={setFunction}/>);
     screen.debug();
 
-    expect(screen.getByText("詳細画面")).toBeTruthy();
-
+    expect(screen.getByText("✖️")).toBeTruthy();
     expect(screen.getByText("シチュエーション")).toBeTruthy();
-    expect(screen.getByText("1つ目です")).toBeTruthy();
-
-    expect(screen.getByText("曲名")).toBeTruthy();
     expect(screen.getByText("名前です")).toBeTruthy();
-
-    expect(screen.getByText("歌手名")).toBeTruthy();
-    expect(screen.getByText("1")).toBeTruthy();
-
-    expect(screen.getByText("おすすめポイント")).toBeTruthy();
+    expect(screen.getByText("曲名（1 ~ 100文字）")).toBeTruthy();
+    expect(screen.getByText("歌手名（1 ~ 100文字）")).toBeTruthy();
+    expect(screen.getByText("おすすめポイント（1 ~ 1000文字）")).toBeTruthy();
     expect(screen.getByText("理由です")).toBeTruthy();
-
-    expect(screen.getByText("投稿者")).toBeTruthy();
-    expect(screen.getByText("UserName")).toBeTruthy();
-    expect(screen.getByText("投稿日")).toBeTruthy();
-    expect(screen.getByText("2000/01/01 11:11")).toBeTruthy();
-    expect(screen.getByText("更新日")).toBeTruthy();
-    expect(screen.getByText("3000/12/30 00:00")).toBeTruthy();
-
-    expect(screen.getByText("トップ画面へ戻る")).toBeTruthy();
-
-    expect(screen.getByRole("heading")).toBeTruthy();
+    expect(screen.getByText("更新する")).toBeTruthy();
+    
+    expect(screen.getAllByRole("textbox")[0]).toBeTruthy();
+    expect(screen.getAllByRole("textbox")[1]).toBeTruthy();
+    expect(screen.getAllByRole("textbox")[2]).toBeTruthy();
+    // selectタグ
+    expect(screen.getByRole("combobox")).toBeTruthy();
+    expect(screen.getByRole("button")).toBeTruthy();
   });
 });
 
